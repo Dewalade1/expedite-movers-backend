@@ -3,7 +3,6 @@ require("dotenv").config({path: '.env'})
 const cors = require("cors")
 const express = require("express")
 const bodyParser = require("body-parser")
-const expressValidator = require("express-validator")
 
 const mainRoute = require("./routes/main.route")
 
@@ -12,7 +11,6 @@ const app = express()
 const port = 4000;
 
 app.use(bodyParser.json())
-app.use(expressValidator())
 
 app.use('/', mainRoute)
 
