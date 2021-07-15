@@ -106,5 +106,6 @@ dist
 # VSCode
 .vscode/
 
-# Misc. Folders
+# Misc. Folders and files
 .history/
+.env
