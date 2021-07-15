@@ -2,7 +2,7 @@
   "name": "expedite-movers",
   "version": "1.0.0",
   "description": "This is the backend of the official Expedite movers app",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "test app, test",
     "start": "node index.js",
