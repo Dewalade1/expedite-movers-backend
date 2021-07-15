@@ -1,4 +1,4 @@
-require("dotenv").config({path: '.env'})
+require("dotenv").config({path: './.env'})
 
 const cors = require("cors")
 const express = require("express")
@@ -8,7 +8,7 @@ const mainRoute = require("./routes/main.route")
 
 const app = express()
 
-const port = 4000;
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.json())
 
