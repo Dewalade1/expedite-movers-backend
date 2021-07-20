@@ -27,7 +27,8 @@ const options = {
   }
 };
 
-app.use(moesifExpress(options));
+moesifExpress(options).startCaptureOutgoing();
+app.use(moesifExpress(options)); 
 
 app.use(bodyParser.json())
 

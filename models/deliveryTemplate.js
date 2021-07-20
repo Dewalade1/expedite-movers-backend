@@ -1,4 +1,4 @@
-const DeliveryTemplate = `
+exports.html = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="width:100%;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
  <head> 
@@ -174,7 +174,7 @@ a[x-apple-data-detectors] {
                       <td esdev-links-color="#757575" class="esd-block-text" align="center" style="padding:0;Margin:0;padding-bottom:25px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:23px;color:#dad9d8;font-size:15px">Incoming message from our website</p></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
-                      <td class="esd-block-button" align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:20px"><span class="es-button-border" style="border-style:solid;border-color:#26a4d3;background:#26a4d3;border-width:0px;display:inline-block;border-radius:34px;width:auto"><a href="mailto:{{contact.email}}?subject=Thank%20you%20for%20reaching%20out!" class="es-button es-button-2" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;transition:all 100ms ease-in;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;border-style:solid;border-color:#26a4d3;border-width:15px 30px;display:inline-block;background:none 0% 0% repeat scroll #26a4d3;border-radius:34px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:bold;font-style:normal;line-height:17px;width:auto;text-align:center">Send a reply</a></span></td> 
+                      <td class="esd-block-button" align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:20px"><span class="es-button-border" style="border-style:solid;border-color:#26a4d3;background:#26a4d3;border-width:0px;display:inline-block;border-radius:34px;width:auto"><a href="mailto:{{data.email}}?subject=Thank%20you%20for%20reaching%20out!" class="es-button es-button-2" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;transition:all 100ms ease-in;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;border-style:solid;border-color:#26a4d3;border-width:15px 30px;display:inline-block;background:none 0% 0% repeat scroll #26a4d3;border-radius:34px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:bold;font-style:normal;line-height:17px;width:auto;text-align:center">Send a reply</a></span></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -197,10 +197,10 @@ a[x-apple-data-detectors] {
                       <td class="esd-block-text" align="left" style="padding:0;Margin:0;padding-top:5px;padding-bottom:15px"><h2 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;font-size:20px;font-style:normal;font-weight:bold;color:#333333">Hi {{receiver.firstName}}<br><br></h2>Great news! We just got a new message. Here's the details:</td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
-                      <td class="esd-block-text" align="left" style="padding:0;Margin:0;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:23px;color:#555555;font-size:15px"><br><b>Name:</b> {{contact.name}}<br><br><b>email:</b> {{contact.email}}&nbsp;</p></td> 
+                      <td class="esd-block-text" align="left" style="padding:0;Margin:0;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:23px;color:#555555;font-size:15px"><br><b>Name:</b> {{data.name}}<br><br><b>email:</b> {{data.email}}&nbsp;</p></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
-                      <td class="esd-block-text" align="left" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:23px;color:#555555;font-size:15px"><b>Message:</b> {{contact.message}}</p></td> 
+                      <td class="esd-block-text" align="left" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:23px;color:#555555;font-size:15px"><b>Message:</b> {{data.message}}</p></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td class="esd-block-text" align="left" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:23px;color:#555555;font-size:15px"><br><br>Sincerely,<br><br>The Expeditemovers Support Team.<br><br><br><span style="font-size:11px"><strong>This email address&nbsp;is not being monitored. Mails sent to this address will not&nbsp;be replied to</strong></span></p></td> 
@@ -276,4 +276,51 @@ a[x-apple-data-detectors] {
   <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>  
  </body>
 </html>
+`
+
+exports.plainText = `
+Expeditemovers Ltd.
+
+View in browser ( https://viewstripo.email/ )
+
+( http://www.expeditemoversng.com/ )
+
+**********************
+You have a new Message
+**********************
+
+Incoming message from our website
+
+Send a reply ( {{data.email}}?subject=Thank%20you%20for%20reaching%20out! )
+
+-------------------------
+Hi {{receiver.firstName}}
+
+-------------------------
+
+Great news! We just got a new message. Here's the details:
+
+*Name:* {{data.name}}
+
+*email:* {{data.email}}
+
+*Message:* {{data.message}}
+
+Sincerely,
+
+The Expeditemovers Support Team.
+
+*This email address is not being monitored. Mails sent to this address will not be replied to*
+
+Phone ( tel:012914338 ) Email ( contact@expeditemoversng.com ) Whatsapp ( tel:+2348023062321 ) Map Marker ( https://goo.gl/maps/yCN5n4sSP7XboafQ6 )
+
+15BB, Ojomu (FMRLY. Ruxton) Road, Ikoyi, Lagos, Nigeria
+
+This email was sent to {{receiver.email}}
+You recieve this email because you are registered with *Expeditemovers Ltd. ( https://www.expeditemoversng.com/ )*
+unsubscribe here ( *|UNSUB|* )
+
+Home ( https://www.expeditemoversng.com/ ) | About ( https://www.expeditemoversng.com/about-us ) | Services ( https://www.expeditemoversng.com/services ) | Locations ( https://www.expeditemoversng.com/locations ) | Contact us ( https://www.expeditemoversng.com/contact-us )
+
+Copyright © 2021 *Expeditemovers Ltd. ( https://www.expeditemoversng.com )* , All Rights Reserved.
 `
