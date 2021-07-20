@@ -11,10 +11,14 @@ exports.sendMessageToEmail = (emails, callback) => {
         if (error.response) {
             const {message, code, response} = error;
             const {headers, body} = response;
-            console.error(body);
-            return callback(body)
+            const error = body
+
+            console.error(error);
+            
+            return callback(error)
         }
 
+        console.error(error);
         return callback(error)
     })
 }

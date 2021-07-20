@@ -38,18 +38,19 @@ exports.sendMessageToEmail = (req, res, next) => {
 
     messagesService.sendMessageToEmail(emails, (error, results) => {
 
-        if (error || body)   {
+        if ( error )   {
             return res.status(400).send({
                 success: false,
                 data: null,
-                errors: error || body
+                errors: error
             })
         }
 
         return(
             res.status(200).send({
                 success: true,
-                data: results
+                data: results,
+                errors: error
             })
         )
     })

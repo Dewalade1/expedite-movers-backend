@@ -39,5 +39,5 @@ app.listen(port, () => {
     console.log("[*] Setting up dependencies...")
     console.log("[*] Setting up server config...")
     console.log("[+] Expeditemovers server is now live")
-    console.log(`[+] Server runnung on port ${port}`)
+    console.log(`[+] Server running on port ${port}`)
 })
