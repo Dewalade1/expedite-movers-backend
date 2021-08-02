@@ -1,4 +1,18 @@
 const sendgridMail = require('@sendgrid/mail')
+const sendgridClient = require('@sendgrid/client')
+
+exports.addSenderToContactlist = (request, callback) => {
+
+    sendgridClient.setApiKey(process.env.SENDGRID_API_KEY)
+
+    sendgridClient.request(request)
+        .then(([result, body]) => {
+            console.log(result.statusCode);
+            console.log(result.body);
+
+            return callback(null, result)
+        })
+    }
 
 exports.sendMessageToEmail = (emails, callback) => {
 
