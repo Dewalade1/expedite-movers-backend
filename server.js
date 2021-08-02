@@ -2,6 +2,8 @@ require("dotenv").config({path: './.env'})
 
 const cors = require("cors")
 const express = require("express")
+const Sentry = require("@sentry/node");
+const Tracing = require("@sentry/tracing");
 const bodyParser = require("body-parser")
 const moesifExpress = require('moesif-express');
 
@@ -30,9 +32,29 @@ const options = {
 moesifExpress(options).startCaptureOutgoing();
 app.use(moesifExpress(options)); 
 
+Sentry.init({
+  dsn: "https://acad0aeb38ca4f4cba58ffa0d388c2e4@o471166.ingest.sentry.io/5888348",
+  integrations: [
+    new Sentry.Integrations.Http({ tracing: true }),
+    new Tracing.Integrations.Express({ app }),
+  ],
+
+  tracesSampleRate: 1.0,
+});
+
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
+
 app.use(bodyParser.json())
 
 app.use('/', mainRoute)
+
+app.use(Sentry.Handlers.errorHandler());
+
+app.use(function onError(err, req, res, next) {
+  res.statusCode = 500;
+  res.end(res.sentry + "\n");
+});
 
 app.listen(port, () => {
     console.log("\n[*] Starting Expeditemovers server...")
