@@ -2,7 +2,7 @@ const { body, validationResult } = require("express-validator");
 
 const messagesService = require("../services/messages.service");
 
-// const { recieverNotifData , senderNotifData } = require("../data/dynamicTemplate.data");
+const { recieverNotifData , senderNotifData } = require("../data/dynamicTemplate.data");
 
 exports.validate = ( method ) => {
     switch ( method ) {
@@ -23,6 +23,37 @@ exports.validate = ( method ) => {
     }
 }
 
+exports.addSenderToContactlist = async (req, res, next ) => {
+
+    try{
+        
+        const sender = [
+            {
+                name: req.body.name,
+                email: req.body.email
+            }
+        ]
+
+        const request = {
+            body: sender,
+            method: 'POST',
+            url: '/v3/contactdb/lists/all_contacts/'
+        };
+        
+        messagesService.addSenderToContactlist( request , (error, result) => {
+            return (
+                res.status(200).json({
+                    success: true,
+                    data: results,
+                    error: error
+                })
+            )
+        })
+    } catch (err) {
+        return next(err)
+    }
+}
+
 exports.sendMessageToEmail = async (req, res, next) => {
 
     try {
@@ -38,39 +69,24 @@ exports.sendMessageToEmail = async (req, res, next) => {
             });
         }
 
-        const emails = [
-            // send notification emails to official expeditemovers email accounts
-            {
-                to: ['Olubowale Ade-Onojobi <adewalade@gmail.com>', 'Team <team@ellopod.com>'],
-                from: 'noreply@expeditemoversng.com',
-                templateId: 'd-fbc401c7877e467a810ceb678a220caf',
-                dynamicTemplateData: {
-                        "receiver": {
-                            "firstName": "Dewa",
-                            "lastName": "Support",
-                            "email": "adewalade@gmail.com" 
-                    },
-                        "contact": {
-                            "name": req.body.name,
-                            "email": req.body.email,
-                            "message": req.body.message
-                    },
-                },
-            },
-            // send emails to senders of website messages
-            {
-                to: req.body.email,  // send different emails to multiple people
-                from: 'noreply@expeditemoversng.com',
-                templateId: 'd-82ef6793262e4453a1690d367d8eba95',
-                dynamicTemplateData: {
-                    "receiver": {
-                        "firstName": req.body.name,
-                        "lastName": req.body.lastName,
-                        "email": req.body.email 
-                    },
-                },
-            },
-        ]
+        for (let i = 0; i < recieverNotifData.length; i++) {
+            recieverNotifData[i].dynamicTemplateData.contact = {
+                name: req.body.name,
+                email: req.body.email,
+                message: req.body.message
+            }
+        }
+
+        senderNotifData.dynamicTemplateData = {
+            sender: {
+                name: req.body.name,
+                email: req.body.email
+            }
+        }
+
+        senderNotifData.to = `${req.body.name} <${req.body.email}>`     
+
+        const emails = [...recieverNotifData, senderNotifData]
 
         messagesService.sendMessageToEmail(emails, (error, results) => {
 

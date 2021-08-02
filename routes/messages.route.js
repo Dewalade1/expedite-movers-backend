@@ -7,5 +7,7 @@ const router = express.Router()
 
 router.post("/send-message-to-email", messagesController.validate('sendMessageToEmail'), messagesController.sendMessageToEmail)
 
+router.post("/add-sender-to-contactlist", messagesController.addSenderToContactlist);
+
 
 module.exports = router;
