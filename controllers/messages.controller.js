@@ -84,10 +84,10 @@ exports.sendMessageToEmail = async (req, res, next) => {
             }
         }
 
-        senderNotifData.to = req.body.email        
+        senderNotifData.to = `${req.body.name} <${req.body.email}>`     
 
         const emails = [...recieverNotifData, senderNotifData]
-        console.log(emails)
+
         messagesService.sendMessageToEmail(emails, (error, results) => {
 
             if ( error )   {

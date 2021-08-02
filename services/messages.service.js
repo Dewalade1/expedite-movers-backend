@@ -19,7 +19,7 @@ exports.sendMessageToEmail = (emails, callback) => {
     sendgridMail.setApiKey(process.env.SENDGRID_API_KEY)
 
     sendgridMail.sendMultiple(emails).then(() => {
-        return callback(null, `message sent successfully`)
+        return callback(null, `messages sent successfully`)
     })
     .catch((error) => {
         if (error.response) {

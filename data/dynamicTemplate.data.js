@@ -2,53 +2,29 @@
 // constant data for sending notification emails to official expeditemovers email accounts
 exports.recieverNotifData = [
     {
-        to: ['Olubowale Ade-Onojobi <adewalade@gmail.com>'],
+        to: ['Support Team <adewalade@gmail.com>'],
         from: 'noreply@expeditemoversng.com',
         templateId: 'd-fbc401c7877e467a810ceb678a220caf',
         dynamicTemplateData: {
             receiver: {
-                firstName: "Dewalade",
+                firstName: "Team",
                 lastName: "Support",
                 email: "adewalade@gmail.com"
             },
         },
     },
     {
-        to: ['Olubowale Ade-Onojobi <dewa@ellopod.com>'],
+        to: ['Gideon Ogudu <team@ellopod.com>'],
         from: 'noreply@expeditemoversng.com',
         templateId: 'd-fbc401c7877e467a810ceb678a220caf',
         dynamicTemplateData: {
             receiver: {
-                firstName: "Dewalade",
-                lastName: "Ellopod",
+                firstName: "Gideon",
+                lastName: "Ogudu",
                 email: "team@ellopod.com"
             },
         },
     },
-    // {
-    //     to: ['Support Team <contact@expeditemovers.com>']
-    //     from: 'noreply@expeditemoversng.com',
-    //     templateId: 'd-fbc401c7877e467a810ceb678a220caf',
-    //     dynamicTemplateData: {
-    //         receiver: {
-    //             firstName: "Team",
-    //             lastName: "Support",
-    //             email: "contact@expeditemoversng.com"
-    //         },
-    //     },
-    // },
-    // {
-    //     to: ['Gideon Ogudu <g.ogudu@expeditemoversng.com>']
-    //     from: 'noreply@expeditemoversng.com',
-    //     templateId: 'd-fbc401c7877e467a810ceb678a220caf',
-    //     dynamicTemplateData: {
-    //         receiver: {
-    //             firstName: "Gideon",
-    //             lastName: "Ogudu",
-    //             email: "g.ogudu@expeditemoversng.com"
-    //         },
-    //     },
-    // },
 ]
 
 // send emails to senders of website messages
