@@ -33,12 +33,13 @@ moesifExpress(options).startCaptureOutgoing();
 app.use(moesifExpress(options)); 
 
 Sentry.init({
+  autoSessionTracking: true,
   dsn: "https://acad0aeb38ca4f4cba58ffa0d388c2e4@o471166.ingest.sentry.io/5888348",
   integrations: [
     new Sentry.Integrations.Http({ tracing: true }),
     new Tracing.Integrations.Express({ app }),
   ],
-
+  release: "expeditemoversng@" + process.env.npm_package_version,
   tracesSampleRate: 1.0,
 });
 
